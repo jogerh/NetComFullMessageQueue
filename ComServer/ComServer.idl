@@ -1,0 +1,38 @@
+// ComServer.idl : IDL source for ComServer
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (ComServer.tlb) and marshalling code.
+
+#include "olectl.h"
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	oleautomation,
+	object,
+	uuid(621b055e-d513-48cf-8a36-12b41d8fb004),
+	pointer_default(unique)
+]
+interface IATLControl : IUnknown
+{
+    HRESULT LongRunningTask([in] IATLControl* slave);
+    HRESULT Callback();
+};
+
+[
+	uuid(6ed1b1aa-807b-4a28-87b6-fcdc18ab8dc3),
+	version(1.0),
+]
+library ComServerLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(3254171b-5d49-4ec9-874a-e3c065c1b801),
+	]
+	coclass ATLControl
+	{
+		[default] interface IATLControl;
+	};
+};
+
