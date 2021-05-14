@@ -9,36 +9,40 @@ namespace FullMessageQueueNet
 {
     public partial class MainWindow : Window
     {
-        ComServerLib.ATLControl comObjectOnSeparateApartment;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        IATLControl m_comServerOnSeparateApartment;
+
         private void Button_Click(object sender, RoutedEventArgs args)
         {
             using (WpfApartment apartment = new WpfApartment())
             {
-                Type t = Type.GetTypeFromProgID("ComServerLib.ATLControl.1");
-                EventWaitHandle h = new EventWaitHandle(false, EventResetMode.AutoReset);
-
+                // First, create a COM server on a separate single threaded apartment (STA)
+                // Calls to this COM server will have to be marshalled through the regular
+                // COM RPC mechanism. Likewise, calls from the COM server apartment into
+                // the main thread STA have to be marshaled onto the main thread.
+                Type comServerType = Type.GetTypeFromProgID("ComServerLib.ATLControl.1");
+                
                 apartment.Invoke(() =>
                 {
-                    comObjectOnSeparateApartment = Activator.CreateInstance(t) as ATLControl;
-                    h.Set();
+                    m_comServerOnSeparateApartment = Activator.CreateInstance(comServerType) as ATLControl;
                 });
 
-                h.WaitOne();
-
-                var comObjectOnMainThread = Activator.CreateInstance(t) as ATLControl;
+                // Create another instance on the main thread STA. This will be the object processing callbacks
+                var comObjectOnMainThread = Activator.CreateInstance(comServerType) as ATLControl;
 
                 try
                 {
-                    comObjectOnSeparateApartment.LongRunningTask(comObjectOnMainThread);
+                    // Start a long running task that periodically calls callbacks on the COM object on the main thread
+                    m_comServerOnSeparateApartment.LongRunningTask(comObjectOnMainThread);
                 }
                 catch (COMException e)
                 {
+                    // Oops. The COM server failed to call calbacks from the server STA onto the maint thread STA.
                     MessageBox.Show($"COM Server callback failed: {e.Message}");
                 }
             }
