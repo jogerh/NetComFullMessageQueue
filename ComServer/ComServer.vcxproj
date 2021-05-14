@@ -64,12 +64,14 @@
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <GenerateStublessProxies>true</GenerateStublessProxies>
       <TypeLibraryName>$(IntDir)%(Filename).tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
       <HeaderFileName>$(IntDir)%(Filename)_i.h</HeaderFileName>
       <InterfaceIdentifierFileName>$(IntDir)%(Filename)_i.c</InterfaceIdentifierFileName>
+      <GenerateStublessProxies>false</GenerateStublessProxies>
+      <GenerateClientFiles>None</GenerateClientFiles>
+      <GenerateServerFiles>None</GenerateServerFiles>
     </Midl>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -95,12 +97,14 @@
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <GenerateStublessProxies>true</GenerateStublessProxies>
       <TypeLibraryName>$(IntDir)%(Filename).tlb</TypeLibraryName>
       <DllDataFileName />
       <ValidateAllParameters>true</ValidateAllParameters>
       <HeaderFileName>$(IntDir)%(Filename)_i.h</HeaderFileName>
       <InterfaceIdentifierFileName>$(IntDir)%(Filename)_i.c</InterfaceIdentifierFileName>
+      <GenerateStublessProxies>false</GenerateStublessProxies>
+      <GenerateClientFiles>None</GenerateClientFiles>
+      <GenerateServerFiles>None</GenerateServerFiles>
     </Midl>
     <ResourceCompile>
       <Culture>0x0409</Culture>
