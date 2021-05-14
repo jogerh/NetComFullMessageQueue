@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ComServer", "ComServer\ComServer.vcxproj", "{1A2C9694-212E-4276-87DB-A1935C2713EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullMessageQueueNet", "FullMessageQueueNet\FullMessageQueueNet.csproj", "{B2AB243D-C61A-4E04-971C-CDD5C01ED9C6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1A2C9694-212E-4276-87DB-A1935C2713EB} = {1A2C9694-212E-4276-87DB-A1935C2713EB}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
