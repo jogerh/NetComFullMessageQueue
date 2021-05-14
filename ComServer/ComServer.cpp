@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "ATLControl.h"
+#include "ComServer.h"
 #include <comdef.h>
 
 HRESULT CATLControl::LongRunningTask(IATLControl* comObjectOnMainThread)
