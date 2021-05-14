@@ -67,7 +67,6 @@
     <None Include="ATLControl.rgs">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ATLControl.htm" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="ComServerModule.idl">

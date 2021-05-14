@@ -143,9 +143,6 @@
     <ResourceCompile Include="ComServerModule.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ATLControl.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
     <None Include="ATLControl.rgs" />
     <None Include="ComServerModule.def" />
     <None Include="ComServerModule.rgs" />
