@@ -46,10 +46,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>true</LinkIncremental>
+    <MultiProcMIDL>true</MultiProcMIDL>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
     <LinkIncremental>false</LinkIncremental>
+    <MultiProcMIDL>true</MultiProcMIDL>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -72,6 +74,7 @@
       <GenerateStublessProxies>false</GenerateStublessProxies>
       <GenerateClientFiles>None</GenerateClientFiles>
       <GenerateServerFiles>None</GenerateServerFiles>
+      <EnableErrorChecks>All</EnableErrorChecks>
     </Midl>
     <ResourceCompile>
       <Culture>0x0409</Culture>
@@ -105,6 +108,7 @@
       <GenerateStublessProxies>false</GenerateStublessProxies>
       <GenerateClientFiles>None</GenerateClientFiles>
       <GenerateServerFiles>None</GenerateServerFiles>
+      <EnableErrorChecks>All</EnableErrorChecks>
     </Midl>
     <ResourceCompile>
       <Culture>0x0409</Culture>
