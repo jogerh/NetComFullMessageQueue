@@ -1,7 +1,7 @@
 // ATLControl.h : Declaration of the CATLControl
 #pragma once
 #include "resource.h" // main symbols
-#include "ComServer_i.h"
+#include "ComServerModule_i.h"
 
 using namespace ATL;
 

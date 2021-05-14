@@ -4,7 +4,8 @@
 #include "pch.h"
 #include "framework.h"
 #include "resource.h"
-#include "ComServer_i.h"
+#include "ComServerModule_i.h"
+#include "ComServerModule_i.c"
 
 class CComServerModule : public ATL::CAtlDllModuleT<CComServerModule>
 {
