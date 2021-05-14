@@ -2,7 +2,7 @@
 #include "ComServer.h"
 #include <comdef.h>
 
-HRESULT CComServer::LongRunningTask(IComServer* comObjectOnMainThread)
+HRESULT CComServer::LongRunningTask(ICallbackClient* comObjectOnMainThread)
 {
     HRESULT result = S_OK;
     while (SUCCEEDED(result)) {
@@ -14,7 +14,7 @@ HRESULT CComServer::LongRunningTask(IComServer* comObjectOnMainThread)
     return result;
 }
 
-HRESULT CComServer::Callback()
+HRESULT CCallbackClient::Callback()
 {
     return S_OK;
 }

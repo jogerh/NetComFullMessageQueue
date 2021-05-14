@@ -142,6 +142,7 @@
     <ResourceCompile Include="ComServerModule.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CallbackClient.rgs" />
     <None Include="ComServer.rgs" />
     <None Include="ComServerModule.def" />
     <None Include="ComServerModule.rgs" />

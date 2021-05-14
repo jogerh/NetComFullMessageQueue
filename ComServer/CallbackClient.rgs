@@ -1,0 +1,27 @@
+HKCR
+{
+	ComServerLib.CallbackClient.1 = s 'CallbackClient implementation object'
+    {
+        CLSID = s '{609F7F2C-67A8-4D4C-A889-38232048AF1C}'
+    }
+    ComServerLib.CallbackClient = s 'CallbackClient implementation object'
+    {
+        CLSID = s '{609F7F2C-67A8-4D4C-A889-38232048AF1C}'
+        CurVer = s 'ComServerLib.CallbackClient.1'
+    }
+
+	NoRemove CLSID
+	{
+		ForceRemove {609F7F2C-67A8-4D4C-A889-38232048AF1C} = s 'CallbackClient class'
+		{
+			ProgID = s 'ComServerLib.CallbackClient.1'
+            VersionIndependentProgID = s 'ComServerLib.CallbackClient'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		    TypeLib = s '{6ed1b1aa-807b-4a28-87b6-fcdc18ab8dc3}'
+			Version = s '1.0'
+		}
+	}
+}

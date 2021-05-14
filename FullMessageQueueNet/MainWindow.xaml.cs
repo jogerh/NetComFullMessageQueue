@@ -25,15 +25,15 @@ namespace FullMessageQueueNet
                 // Calls to this COM server will have to be marshalled through the regular
                 // COM RPC mechanism. Likewise, calls from the COM server apartment into
                 // the main thread STA have to be marshaled onto the main thread.
-                Type comServerType = Type.GetTypeFromProgID("ComServerLib.ComServer.1");
-                
                 apartment.Invoke(() =>
                 {
+                    Type comServerType = Type.GetTypeFromProgID("ComServerLib.ComServer.1");
                     m_comServerOnSeparateApartment = Activator.CreateInstance(comServerType) as IComServer;
                 });
 
                 // Create another instance on the main thread STA. This will be the object processing callbacks
-                var comObjectOnMainThread = Activator.CreateInstance(comServerType) as ComServer;
+                Type comClientType = Type.GetTypeFromProgID("ComServerLib.CallbackClient.1");
+                var comObjectOnMainThread = Activator.CreateInstance(comClientType) as CallbackClient;
 
                 try
                 {

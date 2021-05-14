@@ -57,6 +57,9 @@
     <None Include="ComServer.rgs">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="CallbackClient.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="ComServerModule.idl">

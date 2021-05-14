@@ -4,13 +4,23 @@ import "ocidl.idl";
 [
 	oleautomation,
 	object,
+	uuid(2715DB2C-616E-4C8D-BC30-386E87F2083E),
+	pointer_default(unique)
+]
+interface ICallbackClient : IUnknown
+{
+	HRESULT Callback();
+};
+
+[
+	oleautomation,
+	object,
 	uuid(621b055e-d513-48cf-8a36-12b41d8fb004),
 	pointer_default(unique)
 ]
 interface IComServer : IUnknown
 {
-    HRESULT LongRunningTask([in] IComServer* slave);
-    HRESULT Callback();
+    HRESULT LongRunningTask([in] ICallbackClient* slave);
 };
 
 [
@@ -20,6 +30,7 @@ interface IComServer : IUnknown
 library ComServerLib
 {
 	interface IComServer;
+	interface ICallbackClient;
 
 	importlib("stdole2.tlb");
 	[
@@ -28,6 +39,14 @@ library ComServerLib
 	coclass ComServer
 	{
 		[default] interface IComServer;
+	};
+
+	[
+		uuid(609F7F2C-67A8-4D4C-A889-38232048AF1C),
+	]
+	coclass CallbackClient
+	{
+		[default] interface ICallbackClient;
 	};
 };
 
