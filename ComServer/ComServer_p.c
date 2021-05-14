@@ -537,12 +537,6 @@ PCInterfaceName const _ComServerModule_InterfaceNamesList[] =
     0
 };
 
-const IID *  const _ComServerModule_BaseIIDList[] = 
-{
-    0,
-    0
-};
-
 
 #define _ComServerModule_CHECK_IID(n)	IID_GENERIC_CHECK_IID( _ComServerModule, pIID, n)
 
@@ -563,7 +557,7 @@ const ExtendedProxyFileInfo ComServerModule_ProxyFileInfo =
     (PCInterfaceProxyVtblList *) & _ComServerModule_ProxyVtblList,
     (PCInterfaceStubVtblList *) & _ComServerModule_StubVtblList,
     (const PCInterfaceName * ) & _ComServerModule_InterfaceNamesList,
-    (const IID ** ) & _ComServerModule_BaseIIDList,
+    0, /* no delegation */
     & _ComServerModule_IID_Lookup, 
     1,
     2,

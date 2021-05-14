@@ -51,6 +51,13 @@ typedef interface IATLControl IATLControl;
 #endif 	/* __IATLControl_FWD_DEFINED__ */
 
 
+#ifndef __IATLControl_FWD_DEFINED__
+#define __IATLControl_FWD_DEFINED__
+typedef interface IATLControl IATLControl;
+
+#endif 	/* __IATLControl_FWD_DEFINED__ */
+
+
 #ifndef __ATLControl_FWD_DEFINED__
 #define __ATLControl_FWD_DEFINED__
 
@@ -166,6 +173,7 @@ EXTERN_C const IID IID_IATLControl;
 
 /* library ComServerLib */
 /* [version][uuid] */ 
+
 
 
 EXTERN_C const IID LIBID_ComServerLib;

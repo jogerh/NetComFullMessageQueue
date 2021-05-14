@@ -19,6 +19,8 @@ interface IATLControl : IUnknown
 ]
 library ComServerLib
 {
+	interface IATLControl;
+
 	importlib("stdole2.tlb");
 	[
 		uuid(3254171b-5d49-4ec9-874a-e3c065c1b801),
