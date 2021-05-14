@@ -14,38 +14,27 @@ public:
     DECLARE_REGISTRY_APPID_RESOURCEID(IDR_COMSERVERMODULE, "{6ed1b1aa-807b-4a28-87b6-fcdc18ab8dc3}")
 };
 
-CComServerModule _AtlModule;
+CComServerModule s_atlModule;
 
 using namespace ATL;
 
-// Used to determine whether the DLL can be unloaded by OLE.
-    STDAPI
-    DllCanUnloadNow(void)
+STDAPI DllCanUnloadNow(void)
 {
-    return _AtlModule.DllCanUnloadNow();
+    return s_atlModule.DllCanUnloadNow();
 }
 
-// Returns a class factory to create an object of the requested type.
-    STDAPI
-    DllGetClassObject(_In_ REFCLSID rclsid, _In_ REFIID riid, _Outptr_ LPVOID* ppv)
+STDAPI DllGetClassObject(_In_ REFCLSID rclsid, _In_ REFIID riid, _Outptr_ LPVOID* ppv)
 {
-    return _AtlModule.DllGetClassObject(rclsid, riid, ppv);
+    return s_atlModule.DllGetClassObject(rclsid, riid, ppv);
 }
 
-// DllRegisterServer - Adds entries to the system registry.
-    STDAPI
-    DllRegisterServer(void)
+STDAPI DllRegisterServer(void)
 {
-    // registers object, typelib and all interfaces in typelib
-    HRESULT hr = _AtlModule.DllRegisterServer();
-    return hr;
+    return s_atlModule.DllRegisterServer();
 }
 
-// DllUnregisterServer - Removes entries from the system registry.
-    STDAPI
-    DllUnregisterServer(void)
+STDAPI DllUnregisterServer(void)
 {
-    HRESULT hr = _AtlModule.DllUnregisterServer();
-    return hr;
+    return s_atlModule.DllUnregisterServer();
 }
 
