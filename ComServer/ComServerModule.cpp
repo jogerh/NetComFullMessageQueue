@@ -10,7 +10,7 @@ class CComServerModule : public ATL::CAtlDllModuleT<CComServerModule>
 {
 public:
     DECLARE_LIBID(LIBID_ComServerLib)
-    DECLARE_REGISTRY_APPID_RESOURCEID(IDR_COMSERVER, "{6ed1b1aa-807b-4a28-87b6-fcdc18ab8dc3}")
+    DECLARE_REGISTRY_APPID_RESOURCEID(IDR_COMSERVERMODULE, "{6ed1b1aa-807b-4a28-87b6-fcdc18ab8dc3}")
 };
 
 CComServerModule _AtlModule;

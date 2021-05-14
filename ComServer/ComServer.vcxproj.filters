@@ -39,7 +39,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ComServer.cpp">
+    <ClCompile Include="ComServerModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ComServer_i.c">
@@ -53,15 +53,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ComServer.rc">
+    <ResourceCompile Include="ComServerModule.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ComServer.rgs">
+    <None Include="ComServerModule.rgs">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ComServer.def">
+    <None Include="ComServerModule.def">
       <Filter>Source Files</Filter>
     </None>
     <None Include="ATLControl.rgs">
@@ -70,7 +70,7 @@
     <None Include="ATLControl.htm" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="ComServer.idl">
+    <Midl Include="ComServerModule.idl">
       <Filter>Source Files</Filter>
     </Midl>
   </ItemGroup>

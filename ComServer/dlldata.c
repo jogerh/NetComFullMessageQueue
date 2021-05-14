@@ -20,11 +20,13 @@ extern "C"   {
 #endif
 
 EXTERN_PROXY_FILE( ComServer )
+EXTERN_PROXY_FILE( ComServerModule )
 
 
 PROXYFILE_LIST_START
 /* Start of list */
   REFERENCE_PROXY_FILE( ComServer ),
+  REFERENCE_PROXY_FILE( ComServerModule ),
 /* End of list */
 PROXYFILE_LIST_END
 

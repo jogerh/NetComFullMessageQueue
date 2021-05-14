@@ -3,7 +3,7 @@
 // Used by ComServer.rc
 //
 #define IDS_PROJNAME                    100
-#define IDR_COMSERVER                   101
+#define IDR_COMSERVERMODULE             101
 #define IDB_ATLCONTROL                  106
 #define IDR_ATLCONTROL                  107
 

@@ -29,7 +29,7 @@ namespace FullMessageQueueNet
                 
                 apartment.Invoke(() =>
                 {
-                    m_comServerOnSeparateApartment = Activator.CreateInstance(comServerType) as ATLControl;
+                    m_comServerOnSeparateApartment = Activator.CreateInstance(comServerType) as IATLControl;
                 });
 
                 // Create another instance on the main thread STA. This will be the object processing callbacks

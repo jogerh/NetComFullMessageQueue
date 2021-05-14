@@ -6,7 +6,7 @@
  /* File created by MIDL compiler version 8.01.0622 */
 /* at Tue Jan 19 04:14:07 2038
  */
-/* Compiler settings for ComServer.idl:
+/* Compiler settings for ComServerModule.idl:
     Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0622 
     protocol : all , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
@@ -52,23 +52,23 @@
 #define TRANSMIT_AS_TABLE_SIZE    0            
 #define WIRE_MARSHAL_TABLE_SIZE   0            
 
-typedef struct _ComServer_MIDL_TYPE_FORMAT_STRING
+typedef struct _ComServerModule_MIDL_TYPE_FORMAT_STRING
     {
     short          Pad;
     unsigned char  Format[ TYPE_FORMAT_STRING_SIZE ];
-    } ComServer_MIDL_TYPE_FORMAT_STRING;
+    } ComServerModule_MIDL_TYPE_FORMAT_STRING;
 
-typedef struct _ComServer_MIDL_PROC_FORMAT_STRING
+typedef struct _ComServerModule_MIDL_PROC_FORMAT_STRING
     {
     short          Pad;
     unsigned char  Format[ PROC_FORMAT_STRING_SIZE ];
-    } ComServer_MIDL_PROC_FORMAT_STRING;
+    } ComServerModule_MIDL_PROC_FORMAT_STRING;
 
-typedef struct _ComServer_MIDL_EXPR_FORMAT_STRING
+typedef struct _ComServerModule_MIDL_EXPR_FORMAT_STRING
     {
     long          Pad;
     unsigned char  Format[ EXPR_FORMAT_STRING_SIZE ];
-    } ComServer_MIDL_EXPR_FORMAT_STRING;
+    } ComServerModule_MIDL_EXPR_FORMAT_STRING;
 
 
 static const RPC_SYNTAX_IDENTIFIER  _RpcTransferSyntax = 
@@ -79,9 +79,9 @@ static const RPC_SYNTAX_IDENTIFIER  _NDR64_RpcTransferSyntax =
 
 
 
-extern const ComServer_MIDL_TYPE_FORMAT_STRING ComServer__MIDL_TypeFormatString;
-extern const ComServer_MIDL_PROC_FORMAT_STRING ComServer__MIDL_ProcFormatString;
-extern const ComServer_MIDL_EXPR_FORMAT_STRING ComServer__MIDL_ExprFormatString;
+extern const ComServerModule_MIDL_TYPE_FORMAT_STRING ComServerModule__MIDL_TypeFormatString;
+extern const ComServerModule_MIDL_PROC_FORMAT_STRING ComServerModule__MIDL_ProcFormatString;
+extern const ComServerModule_MIDL_EXPR_FORMAT_STRING ComServerModule__MIDL_ExprFormatString;
 
 
 extern const MIDL_STUB_DESC Object_StubDesc;
@@ -96,7 +96,7 @@ extern const MIDL_STUBLESS_PROXY_INFO IATLControl_ProxyInfo;
 #error  Invalid build platform for this stub.
 #endif
 
-static const ComServer_MIDL_PROC_FORMAT_STRING ComServer__MIDL_ProcFormatString =
+static const ComServerModule_MIDL_PROC_FORMAT_STRING ComServerModule__MIDL_ProcFormatString =
     {
         0,
         {
@@ -161,7 +161,7 @@ static const ComServer_MIDL_PROC_FORMAT_STRING ComServer__MIDL_ProcFormatString 
         }
     };
 
-static const ComServer_MIDL_TYPE_FORMAT_STRING ComServer__MIDL_TypeFormatString =
+static const ComServerModule_MIDL_TYPE_FORMAT_STRING ComServerModule__MIDL_TypeFormatString =
     {
         0,
         {
@@ -212,7 +212,7 @@ static const unsigned short IATLControl_FormatStringOffsetTable[] =
  /* File created by MIDL compiler version 8.01.0622 */
 /* at Tue Jan 19 04:14:07 2038
  */
-/* Compiler settings for ComServer.idl:
+/* Compiler settings for ComServerModule.idl:
     Oicf, W1, Zp8, env=Win64 (32b run), target_arch=AMD64 8.01.0622 
     protocol : all , ms_ext, c_ext, robust
     error checks: allocation ref bounds_check enum stub_data 
@@ -433,9 +433,9 @@ static const MIDL_SYNTAX_INFO IATLControl_SyntaxInfo [  2 ] =
     {
     {{0x8A885D04,0x1CEB,0x11C9,{0x9F,0xE8,0x08,0x00,0x2B,0x10,0x48,0x60}},{2,0}},
     0,
-    ComServer__MIDL_ProcFormatString.Format,
+    ComServerModule__MIDL_ProcFormatString.Format,
     &IATLControl_FormatStringOffsetTable[-3],
-    ComServer__MIDL_TypeFormatString.Format,
+    ComServerModule__MIDL_TypeFormatString.Format,
     0,
     0,
     0
@@ -455,7 +455,7 @@ static const MIDL_SYNTAX_INFO IATLControl_SyntaxInfo [  2 ] =
 static const MIDL_STUBLESS_PROXY_INFO IATLControl_ProxyInfo =
     {
     &Object_StubDesc,
-    ComServer__MIDL_ProcFormatString.Format,
+    ComServerModule__MIDL_ProcFormatString.Format,
     &IATLControl_FormatStringOffsetTable[-3],
     (RPC_SYNTAX_IDENTIFIER*)&_RpcTransferSyntax,
     2,
@@ -468,7 +468,7 @@ static const MIDL_SERVER_INFO IATLControl_ServerInfo =
     {
     &Object_StubDesc,
     0,
-    ComServer__MIDL_ProcFormatString.Format,
+    ComServerModule__MIDL_ProcFormatString.Format,
     (unsigned short *) &IATLControl_FormatStringOffsetTable[-3],
     0,
     (RPC_SYNTAX_IDENTIFIER*)&_NDR64_RpcTransferSyntax,
@@ -505,7 +505,7 @@ static const MIDL_STUB_DESC Object_StubDesc =
     0,
     0,
     0,
-    ComServer__MIDL_TypeFormatString.Format,
+    ComServerModule__MIDL_TypeFormatString.Format,
     1, /* -error bounds_check flag */
     0x60001, /* Ndr library version */
     0,
@@ -519,37 +519,37 @@ static const MIDL_STUB_DESC Object_StubDesc =
     0
     };
 
-const CInterfaceProxyVtbl * const _ComServer_ProxyVtblList[] = 
+const CInterfaceProxyVtbl * const _ComServerModule_ProxyVtblList[] = 
 {
     ( CInterfaceProxyVtbl *) &_IATLControlProxyVtbl,
     0
 };
 
-const CInterfaceStubVtbl * const _ComServer_StubVtblList[] = 
+const CInterfaceStubVtbl * const _ComServerModule_StubVtblList[] = 
 {
     ( CInterfaceStubVtbl *) &_IATLControlStubVtbl,
     0
 };
 
-PCInterfaceName const _ComServer_InterfaceNamesList[] = 
+PCInterfaceName const _ComServerModule_InterfaceNamesList[] = 
 {
     "IATLControl",
     0
 };
 
-const IID *  const _ComServer_BaseIIDList[] = 
+const IID *  const _ComServerModule_BaseIIDList[] = 
 {
     0,
     0
 };
 
 
-#define _ComServer_CHECK_IID(n)	IID_GENERIC_CHECK_IID( _ComServer, pIID, n)
+#define _ComServerModule_CHECK_IID(n)	IID_GENERIC_CHECK_IID( _ComServerModule, pIID, n)
 
-int __stdcall _ComServer_IID_Lookup( const IID * pIID, int * pIndex )
+int __stdcall _ComServerModule_IID_Lookup( const IID * pIID, int * pIndex )
 {
     
-    if(!_ComServer_CHECK_IID(0))
+    if(!_ComServerModule_CHECK_IID(0))
         {
         *pIndex = 0;
         return 1;
@@ -558,13 +558,13 @@ int __stdcall _ComServer_IID_Lookup( const IID * pIID, int * pIndex )
     return 0;
 }
 
-const ExtendedProxyFileInfo ComServer_ProxyFileInfo = 
+const ExtendedProxyFileInfo ComServerModule_ProxyFileInfo = 
 {
-    (PCInterfaceProxyVtblList *) & _ComServer_ProxyVtblList,
-    (PCInterfaceStubVtblList *) & _ComServer_StubVtblList,
-    (const PCInterfaceName * ) & _ComServer_InterfaceNamesList,
-    (const IID ** ) & _ComServer_BaseIIDList,
-    & _ComServer_IID_Lookup, 
+    (PCInterfaceProxyVtblList *) & _ComServerModule_ProxyVtblList,
+    (PCInterfaceStubVtblList *) & _ComServerModule_StubVtblList,
+    (const PCInterfaceName * ) & _ComServerModule_InterfaceNamesList,
+    (const IID ** ) & _ComServerModule_BaseIIDList,
+    & _ComServerModule_IID_Lookup, 
     1,
     2,
     0, /* table of [async_uuid] interfaces */

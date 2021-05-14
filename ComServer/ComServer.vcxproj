@@ -78,7 +78,7 @@
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\ComServer.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\ComServerModule.def</ModuleDefinitionFile>
       <RegisterOutput>true</RegisterOutput>
     </Link>
   </ItemDefinitionGroup>
@@ -109,7 +109,7 @@
     </ResourceCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <ModuleDefinitionFile>.\ComServer.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>.\ComServerModule.def</ModuleDefinitionFile>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <RegisterOutput>true</RegisterOutput>
@@ -125,7 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ATLControl.cpp" />
-    <ClCompile Include="ComServer.cpp" />
+    <ClCompile Include="ComServerModule.cpp" />
     <ClCompile Include="ComServer_i.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
@@ -140,18 +140,18 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ComServer.rc" />
+    <ResourceCompile Include="ComServerModule.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ATLControl.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="ATLControl.rgs" />
-    <None Include="ComServer.def" />
-    <None Include="ComServer.rgs" />
+    <None Include="ComServerModule.def" />
+    <None Include="ComServerModule.rgs" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="ComServer.idl" />
+    <Midl Include="ComServerModule.idl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="ATLControl.bmp" />
