@@ -7,7 +7,7 @@ using System.Windows.Threading;
 using ComServerLib;
 namespace FullMessageQueueNet
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
 
         public MainWindow()
@@ -15,30 +15,21 @@ namespace FullMessageQueueNet
             InitializeComponent();
         }
 
-        IComServer m_comServerOnSeparateApartment;
-
         private void Button_Click(object sender, RoutedEventArgs args)
         {
-            using (WpfApartment apartment = new WpfApartment())
+            using (SingleThreadedApartment apartment = new SingleThreadedApartment())
             {
                 // First, create a COM server on a separate single threaded apartment (STA)
-                // Calls to this COM server will have to be marshalled through the regular
-                // COM RPC mechanism. Likewise, calls from the COM server apartment into
-                // the main thread STA have to be marshaled onto the main thread.
-                apartment.Invoke(() =>
-                {
-                    Type comServerType = Type.GetTypeFromProgID("ComServerLib.ComServer.1");
-                    m_comServerOnSeparateApartment = Activator.CreateInstance(comServerType) as IComServer;
-                });
+                var comServerOnSeparateApartment = apartment.CreateInstance<IComServer>("ComServerLib.ComServer.1");
 
-                // Create another instance on the main thread STA. This will be the object processing callbacks
+                // Then, Create another instance on the main thread STA. This will be the object processing callbacks
                 Type comClientType = Type.GetTypeFromProgID("ComServerLib.CallbackClient.1");
                 var comObjectOnMainThread = Activator.CreateInstance(comClientType) as CallbackClient;
 
                 try
                 {
                     // Start a long running task that periodically calls callbacks on the COM object on the main thread
-                    m_comServerOnSeparateApartment.LongRunningTask(comObjectOnMainThread);
+                    comServerOnSeparateApartment.LongRunningTask(comObjectOnMainThread);
                 }
                 catch (COMException e)
                 {
@@ -48,56 +39,58 @@ namespace FullMessageQueueNet
             }
         }
 
-
-        // Copy paste from internet.
-        internal class WpfApartment : IDisposable
+        internal class SingleThreadedApartment : IDisposable
         {
-            Thread _thread; // the STA thread
-            TaskScheduler scheduler;
+            private Thread m_thread; // the STA thread
+            private readonly TaskScheduler m_scheduler;
 
-            public WpfApartment()
+            // Set up the apartment and make it ready for creating instances on the apartment
+            public SingleThreadedApartment()
             {
-                var tcs = new TaskCompletionSource<TaskScheduler>();
+                var schedulerFuture = new TaskCompletionSource<TaskScheduler>();
 
                 // start the STA thread with WPF Dispatcher
-                _thread = new Thread(_ =>
+                m_thread = new Thread(_ =>
                 {
                     // post a callback to get the TaskScheduler
-                    Dispatcher.CurrentDispatcher.InvokeAsync(
-                    () => tcs.SetResult(TaskScheduler.FromCurrentSynchronizationContext()),
-                    DispatcherPriority.ApplicationIdle);
+                    Dispatcher.CurrentDispatcher.InvokeAsync( () => schedulerFuture.SetResult(TaskScheduler.FromCurrentSynchronizationContext()), DispatcherPriority.ApplicationIdle);
 
-                    // run the WPF Dispatcher message loop
+                    // run the message loop
                     Dispatcher.Run();
                 });
 
-                _thread.SetApartmentState(ApartmentState.STA);
-                _thread.IsBackground = true;
-                _thread.Start();
-                scheduler = tcs.Task.Result;
+                m_thread.SetApartmentState(ApartmentState.STA);
+                m_thread.IsBackground = true;
+                m_thread.Start();
+                m_scheduler = schedulerFuture.Task.Result;
+            }
+
+            // Creates a COM object on the STA
+            public T CreateInstance<T>(string progid) where T : class
+            {
+                T instance = null;
+                InvokeAsync(() =>
+                {
+                    Type comServerType = Type.GetTypeFromProgID(progid);
+                    instance = Activator.CreateInstance(comServerType) as T;
+                }).Wait();
+                return instance;
+
             }
 
             // shutdown the STA thread
             public void Dispose()
             {
-                if (_thread != null && _thread.IsAlive)
-                {
-                    InvokeAsync(() => Dispatcher.ExitAllFrames());
-                    _thread.Join();
-                    _thread = null;
-                }
+                if (m_thread == null || !m_thread.IsAlive) 
+                    return;
+                InvokeAsync(Dispatcher.ExitAllFrames);
+                m_thread.Join();
+                m_thread = null;
             }
 
-            // Task.Factory.StartNew wrappers
-            public Task InvokeAsync(Action action)
+            private Task InvokeAsync(Action action)
             {
-                return Task.Factory.StartNew(action,
-                    CancellationToken.None, TaskCreationOptions.None, this.scheduler);
-            }
-
-            public void Invoke(Action action)
-            {
-                InvokeAsync(action).Wait();
+                return Task.Factory.StartNew(action, CancellationToken.None, TaskCreationOptions.None, m_scheduler);
             }
         }
     }
