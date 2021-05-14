@@ -1,21 +1,21 @@
 HKCR
 {
-	ComServerLib.ATLControl.1 = s 'ATLControl implementation object'
+	ComServerLib.ComServer.1 = s 'ComServer implementation object'
     {
         CLSID = s '{3254171b-5d49-4ec9-874a-e3c065c1b801}'
     }
-    ComServerLib.ATLControl = s 'ATLControl implementation object'
+    ComServerLib.ComServer = s 'ComServer implementation object'
     {
         CLSID = s '{3254171b-5d49-4ec9-874a-e3c065c1b801}'
-        CurVer = s 'ComServerLib.ATLControl.1'
+        CurVer = s 'ComServerLib.ComServer.1'
     }
 
 	NoRemove CLSID
 	{
-		ForceRemove {3254171b-5d49-4ec9-874a-e3c065c1b801} = s 'ATLControl class'
+		ForceRemove {3254171b-5d49-4ec9-874a-e3c065c1b801} = s 'ComServer class'
 		{
-			ProgID = s 'ComServerLib.ATLControl.1'
-            VersionIndependentProgID = s 'ComServerLib.ATLControl'
+			ProgID = s 'ComServerLib.ComServer.1'
+            VersionIndependentProgID = s 'ComServerLib.ComServer'
 			InprocServer32 = s '%MODULE%'
 			{
 				val ThreadingModel = s 'Both'

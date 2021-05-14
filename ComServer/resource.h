@@ -4,8 +4,7 @@
 //
 #define IDS_PROJNAME                    100
 #define IDR_COMSERVERMODULE             101
-#define IDB_ATLCONTROL                  106
-#define IDR_ATLCONTROL                  107
+#define IDR_COMSERVER                   107
 
 // Next default values for new objects
 // 

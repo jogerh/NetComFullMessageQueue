@@ -7,9 +7,9 @@ import "ocidl.idl";
 	uuid(621b055e-d513-48cf-8a36-12b41d8fb004),
 	pointer_default(unique)
 ]
-interface IATLControl : IUnknown
+interface IComServer : IUnknown
 {
-    HRESULT LongRunningTask([in] IATLControl* slave);
+    HRESULT LongRunningTask([in] IComServer* slave);
     HRESULT Callback();
 };
 
@@ -19,15 +19,15 @@ interface IATLControl : IUnknown
 ]
 library ComServerLib
 {
-	interface IATLControl;
+	interface IComServer;
 
 	importlib("stdole2.tlb");
 	[
 		uuid(3254171b-5d49-4ec9-874a-e3c065c1b801),
 	]
-	coclass ATLControl
+	coclass ComServer
 	{
-		[default] interface IATLControl;
+		[default] interface IComServer;
 	};
 };
 

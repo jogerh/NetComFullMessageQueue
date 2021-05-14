@@ -2,7 +2,7 @@
 #include "ComServer.h"
 #include <comdef.h>
 
-HRESULT CATLControl::LongRunningTask(IATLControl* comObjectOnMainThread)
+HRESULT CComServer::LongRunningTask(IComServer* comObjectOnMainThread)
 {
     HRESULT result = S_OK;
     while (SUCCEEDED(result)) {
@@ -14,7 +14,7 @@ HRESULT CATLControl::LongRunningTask(IATLControl* comObjectOnMainThread)
     return result;
 }
 
-HRESULT CATLControl::Callback()
+HRESULT CComServer::Callback()
 {
     return S_OK;
 }
