@@ -54,7 +54,7 @@
     <None Include="ComServerModule.def">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="ATLControl.rgs">
+    <None Include="ComServer.rgs">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
