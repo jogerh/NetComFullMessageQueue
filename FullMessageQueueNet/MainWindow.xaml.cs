@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace FullMessageQueueNet
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs args)
         {
             using (WpfApartment apartment = new WpfApartment())
             {
@@ -45,7 +46,15 @@ namespace FullMessageQueueNet
                 h.WaitOne();
 
                 var comObjectOnMainThread = Activator.CreateInstance(t) as ATLControl;
-                comObjectOnSeparateApartment.LongRunningTask(comObjectOnMainThread);
+
+                try
+                {
+                    comObjectOnSeparateApartment.LongRunningTask(comObjectOnMainThread);
+                }
+                catch (COMException e)
+                {
+                    MessageBox.Show($"COM Server callback failed: {e.Message}");
+                }
             }
         }
 
